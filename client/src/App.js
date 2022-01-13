@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Login from "./Login"
 import SignupForm from "./SignupForm"
-
+import Header from "./Header"
 
 
 function App() {
@@ -18,6 +18,10 @@ function App() {
     });
   }, []);
 
+// Logout function
+  function onLogout() {
+    setUser(null);
+  }
 
   // useEffect(() => {
   //   fetch("/hello")
@@ -28,6 +32,7 @@ function App() {
     return (
       <div className="App">
         {/* <h1>Page Count: {count}</h1> */}
+        <Header user={user} onLogout={onLogout}/>
       </div>
     )
   }
