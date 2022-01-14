@@ -1,8 +1,10 @@
+import React from 'react'
 import { useState, useEffect } from "react";
+import {  Route, Routes } from "react-router-dom";
 import Login from "./Login"
 import SignupForm from "./SignupForm"
 import Header from "./Header"
-
+import Home from "./Home"
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -28,12 +30,20 @@ function App() {
   //     .then((r) => r.json())
   //     .then((data) => setCount(data.count));
   // }, []);
-  if (user && user.name) {
+
+  if (user && user.username) {
     return (
-      <div className="App">
-        {/* <h1>Page Count: {count}</h1> */}
-        <Header user={user} onLogout={onLogout}/>
-      </div>
+      
+        <div className="App">
+
+          
+          <Header user={user} onLogout={onLogout}/>
+
+          <Routes>
+            <Route exact path= "/" element={<Home />} />
+          </Routes>
+        </div>
+      
     )
   }
   else {

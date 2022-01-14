@@ -38,7 +38,7 @@ function Login({ onLogin }) {
                   />
                 </div>
                 <p className="text-center">
-                  <button className="btn btn-primary mt-3 mb-3" type="submit">Login</button>
+                  <button className="btn btn-warning mt-3 mb-3" type="submit">Login</button>
                 </p>
                 <br></br>
                 <br></br>  
