@@ -10,33 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_212450) do
+ActiveRecord::Schema.define(version: 2022_01_14_170212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "list_books", force: :cascade do |t|
-    t.string "list_name"
-    t.bigint "book_id"
-    t.bigint "reading_list_id"
+  create_table "book_lists", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "reading_list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_list_books_on_book_id"
-    t.index ["reading_list_id"], name: "index_list_books_on_reading_list_id"
+    t.index ["book_id"], name: "index_book_lists_on_book_id"
+    t.index ["reading_list_id"], name: "index_book_lists_on_reading_list_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "image"
+    t.integer "page_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notes", force: :cascade do |t|
-    t.text "note"
     t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_notes_on_book_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "reading_lists", force: :cascade do |t|
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reading_lists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +59,8 @@ ActiveRecord::Schema.define(version: 2022_01_13_212450) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "book_lists", "books"
+  add_foreign_key "book_lists", "reading_lists"
+  add_foreign_key "notes", "books"
   add_foreign_key "notes", "users"
 end

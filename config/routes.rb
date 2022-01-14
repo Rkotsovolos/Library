@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
 
+  resources :books
   resources :list_books
   resources :reading_lists
   

@@ -5,6 +5,6 @@ class User < ApplicationRecord
     has_many :books, through: :notes
     has_many :reading_lists
 
-    validates :username, presence: true
+    validates :username,  presence: true
 
 end
