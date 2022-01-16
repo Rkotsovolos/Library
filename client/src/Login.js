@@ -21,28 +21,37 @@ function Login({ onLogin }) {
 
     return (
         <div className= "container">
-            <h5 className="text-center mt-2" >User Login:</h5>
-              <form  onSubmit={handleSubmit}>
-                <div className=" form-group text-center mt-2">
-                  <label className="mr-2" htmlFor="name">Username:</label>
-                  <input 
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                  <label className="mr-2 ml-2" htmlFor="name">Password:</label>
-                  <input 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+          <div className="row justify-content-center">
+            <div className="col-8" >
+              <div class="card mt-5 bg-warning" style={{borderRadius:"10px", fontFamily:"dosis"}}>
+                <div class="card-header " style={{color:"white"}} >
+                  <h3 className="text-center mt-2 " style={{color: "black", fontWeight: "bold"}} >User Login:</h3>
+                    <form  onSubmit={handleSubmit}>
+                      <div className=" form-group text-center mt-2">
+                        <label className="mr-2" htmlFor="name" style={{color: "black", fontWeight: "bold"}}>Username:</label>
+                        <input 
+                          type="text"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <label className="mr-2 ml-2" htmlFor="name" style={{color: "black", fontWeight: "bold"}}>Password:</label>
+                        <input 
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                      <p className="text-center">
+                        <button className="btn btn-dark mt-3 mb-3" type="submit">Login</button>
+                      </p>
+                      <br></br>
+                      <h1 style={{color: "black", fontWeight: "bold", textAlign: "center"}}>OR</h1>
+                      <br></br>  
+                    </form>
                 </div>
-                <p className="text-center">
-                  <button className="btn btn-warning mt-3 mb-3" type="submit">Login</button>
-                </p>
-                <br></br>
-                <br></br>  
-              </form>
+              </div>
+            </div>
+          </div>
         </div>
     )
 

@@ -5,7 +5,6 @@ function SignupForm({ setUser }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    password_confirmation: ""
   });
 
   const handleChange = (e) => {
@@ -40,14 +39,14 @@ function SignupForm({ setUser }) {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-8">
-          <div className="card mt-2 " style={{borderRadius:"10px", fontFamily:"dosis"}}>
+          <div className="card mt-2 bg-warning" style={{borderRadius:"10px", fontFamily:"dosis"}}>
             <div className="card-header bg-warning" style={{color:"white"}}>
-            <h3 className="text-center">New User?</h3>
+            <h3 className="text-center" style={{color: "black", fontWeight: "bold"}}>Register</h3>
             </div>
-            <h5 className="text-center mt-2" >Create Account:</h5>
+            <h5 className="text-center mt-2" style={{color: "black", fontWeight: "bold"}} >Create Account:</h5>
             <form onSubmit={handleSubmit}>
               <div className="col-12">
-                <label className="col-6 text-right" htmlFor="name">Username:</label>
+                <label className="col-6 text-right" htmlFor="name" style={{color: "black", fontWeight: "bold"}}>Username:</label>
                 <input
                   className="col-3"
                   type="text"
@@ -57,7 +56,7 @@ function SignupForm({ setUser }) {
                 />
               </div>
               <div className="col-12">
-                <label className="col-6 text-right" htmlFor="password">Password:</label>
+                <label className="col-6 text-right" htmlFor="password" style={{color: "black", fontWeight: "bold"}}>Password:</label>
                 <input
                   className="col-3"
                   type="password"
@@ -66,19 +65,8 @@ function SignupForm({ setUser }) {
                   onChange={(e) => handleChange(e)}
                 />
               </div>
-              <div className="col-12">
-                <label className="col-6 text-right" htmlFor="password">Password Confirmation: </label>
-                <input
-                  className="col-3"
-                  type="password"
-                  name="password_confirmation"
-                  value={formData.password_confirmation}
-                  onChange={(e) => handleChange(e)}
-                  autoComplete="current-password"
-                />
-              </div>
               <div className="text-center">
-                <button className="btn btn-warning mt-3 mb-3" type="submit">Sign Up</button>
+                <button className="btn btn-dark mt-3 mb-3" type="submit">Sign Up</button>
               </div>
             </form>
           </div>
