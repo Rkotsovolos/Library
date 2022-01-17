@@ -6,6 +6,11 @@ import SignupForm from "./SignupForm"
 import Nav from "./Nav"
 import Header from "./Header"
 import Home from "./Home"
+import About from './About'
+import ReadingList from './ReadingList'
+import Profile from './Profile'
+
+
 
 
 function App() {
@@ -13,6 +18,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([])
   const [search, setSearch] = useState('')
+  const [bio, setBio] = useState('')
+  
 
 
   useEffect(() => {
@@ -52,10 +59,14 @@ function App() {
         <div className="App">
           <Header user={user} onLogout={onLogout}/>
           <Nav />
+          
           <Routes>
             <Route exact path= "/" element={<Home search={search}  setSearch={setSearch} filteredBooks={filteredBooks} setBooks={setBooks}/>} books={books} />
-            
+            <Route path="/About" element={<About />}/>
+            <Route path="/Reading_list" element={<ReadingList />}/>
+            <Route path="/Profile" element={<Profile user={user} bio={bio} setBio={setBio}/>} />
           </Routes>
+          
         </div>
       
     )

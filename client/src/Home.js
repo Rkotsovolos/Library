@@ -26,7 +26,7 @@ function Home({books, setBooks, search, setSearch, filteredBooks}) {
 
     return (
         <div className="container">
-            <div style={{textAlign: "center", paddingTop: 30}}>
+            <div style={{textAlign: "center", paddingTop: 100}}>
                 <h2 style={{color: "white", fontFamily: 'Courgette'}}>Search Title</h2>
             </div>
             <form style={{display: "flex", alignItems: "center", justifyContent: "center", paddingTop: 30}} onSubmit={searchBook}>  

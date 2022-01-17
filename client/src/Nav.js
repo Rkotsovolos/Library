@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+// import About from './About'
 
 
 function Nav() {
@@ -6,16 +8,19 @@ function Nav() {
         <div>
             <nav class="navbar navbar-dark " style={{display: "flex", justifyContent: "space-around", paddingTop: 20}}>
                 <li class="nav-item">
-                    <a class="nav-link active" style={{color: "white", fontSize: 20}} aria-current="page" href="#">Home</a>
+                    <Link to="/"><h4 style={{color: "white", fontSize: 25}}>Home</h4></Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style={{color: "white", fontSize: 20}} href="#">About</a>
+                 
+                  <Link to="/About"><h4 style={{color: "white", fontSize: 25}}>About</h4></Link>
+            
+                  
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style={{color: "white", fontSize: 20}} href="#">Reading List</a>
+                    <Link to="/Reading_list"><h4 style={{color: "white", fontSize: 25}}>Reading List</h4></Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style={{color: "white", fontSize: 20}} href="#" tabindex="-1">Profile</a>
+                    <Link to="/Profile"><h4 style={{color: "white", fontSize: 25}}>Profile</h4></Link>
                 </li>
             </nav>
         </div>
@@ -24,3 +29,4 @@ function Nav() {
 }
 
 export default Nav
+
