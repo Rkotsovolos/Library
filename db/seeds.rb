@@ -9,3 +9,16 @@
 
 
 User.create(username: "Rkotsovolos", password: "123456")
+
+
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")
+Book.create(title: "Lord of the Rings", author: "JRR Tolkien", image: "https://img.thriftbooks.com/api/images/m/f87833fab0a87d7ab0038f83824a0a81e18dd870.jpg")

@@ -19,7 +19,7 @@ function App() {
   const [books, setBooks] = useState([])
   const [search, setSearch] = useState('')
   const [bio, setBio] = useState('')
-  
+  const [note, setNote] = useState('')
 
 
   useEffect(() => {
@@ -33,12 +33,10 @@ function App() {
   useEffect(() => {
     fetch('/books')
     .then(res => res.json())
-    .then(setBooks)
+    .then((data) => console.log(data))
 
-    // fetch('/books')
-    // .then(res => res.json())
-    // .then(setBooks)
-},[])
+
+  },[])
 
 // Logout function
   function onLogout() {
@@ -51,7 +49,10 @@ function App() {
   //     .then((data) => setCount(data.count));
   // }, []);
 
-  const filteredBooks = books.filter((book) => book.name.toLowerCase().includes(search.toLowerCase())).sort()
+  const filteredBooks = books.length <= 0 ? books : books.filter(book => book.title.toLowerCase().includes(search.toLowerCase())).sort()
+  
+
+
 
   if (user && user.username) {
     return (
@@ -63,7 +64,7 @@ function App() {
           <Routes>
             <Route exact path= "/" element={<Home search={search}  setSearch={setSearch} filteredBooks={filteredBooks} setBooks={setBooks}/>} books={books} />
             <Route path="/About" element={<About />}/>
-            <Route path="/Reading_list" element={<ReadingList />}/>
+            <Route path="/Reading_list" element={<ReadingList note={note} setNote={setNote} />}/>
             <Route path="/Profile" element={<Profile user={user} bio={bio} setBio={setBio}/>} />
           </Routes>
           

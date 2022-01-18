@@ -1,6 +1,6 @@
 
 
-function ReadingList() {
+function ReadingList({note, setNote}) {
 
     
     return (
