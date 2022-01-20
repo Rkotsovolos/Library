@@ -1,6 +1,6 @@
 class ReadingList < ApplicationRecord
-
-    has_many :list_books
-    has_many :books, through: :list_books
+    belongs_to :user
+    has_many :book_lists
+    has_many :books, through: :book_lists
     
 end

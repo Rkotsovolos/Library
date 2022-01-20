@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_170212) do
   enable_extension "plpgsql"
 
   create_table "book_lists", force: :cascade do |t|
+    t.string "name"
     t.bigint "book_id", null: false
     t.bigint "reading_list_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   
 
 
-  resources :books
+  resources :books, only: [:index, :show, :create] do 
+    post :add_note
+    delete :remove_note
 
-  resources :list_books
+  end
 
-  resources :reading_lists, only: [:index, :show, :destroy, :create, :update] do 
+  resources :book_lists
+
+  resources :reading_lists, only: [:index, :show, :destroy, :create, :update] do
     post :add_book
     delete :remove_book
   end
@@ -14,6 +18,10 @@ Rails.application.routes.draw do
   resources :notes
   resources :users, only: [:create]
  
+  
+
+
+
   # test route for setup
   get '/hello', to: 'application#hello_world'
   # Login route
@@ -25,7 +33,9 @@ Rails.application.routes.draw do
   # signing up route
   post '/signup', to: 'users#create'
 
-  post '/Reading_list', to: 'user#index'
+ 
+
+
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -1,7 +1,7 @@
 // import { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 
-function Home({books, setBooks, search, setSearch, filteredBooks}) {
+function Home({books, setBooks, search, setSearch, filteredBooks, lists}) {
 
 
     const bookCards = filteredBooks.map(book => <BookCard 
@@ -10,6 +10,7 @@ function Home({books, setBooks, search, setSearch, filteredBooks}) {
         title={book.title} 
         author={book.author} 
         image={book.image} 
+        
         />)
 
     // const searchBook = (e) => {
