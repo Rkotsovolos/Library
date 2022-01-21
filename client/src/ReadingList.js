@@ -9,7 +9,7 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
     const [show, setShow] = useState(false)    
     const [formData, setFormData] = useState({name:""})
 
-    console.log(userLists, "userLists")
+    
 
     if(userLists.length === 0 ) {
         return (
@@ -25,17 +25,10 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
             </div>
         )
     }
-    console.log(lists, "lists")
+    
 
     const bookLists = lists[0].book_lists
-    console.log(bookLists, "bookLists")
-    
-    
-    
-    // console.log(user, "user")
-    // console.log(postList, "postList")
-    // console.log(lists, "lists")
-    // console.log(setLists, "setLists")
+  
 
     function handleOnChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})

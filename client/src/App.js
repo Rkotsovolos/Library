@@ -19,7 +19,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([])
   const [search, setSearch] = useState('')
-  const [bio, setBio] = useState('hey')
+  const [bio, setBio] = useState('Bio goes here.')
   const [note, setNote] = useState('')
   const {lists, setLists} = useContext(ListsContext)
 
