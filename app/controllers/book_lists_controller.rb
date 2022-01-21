@@ -7,7 +7,7 @@ class BookListsController < ApplicationController
     end
 
     def show
-        list = BookList.find(params[:id])
+        list = ReadingList.find(params[:id])
         render json: list
     end
     
@@ -26,20 +26,28 @@ class BookListsController < ApplicationController
         list = BookList.find(params[:id])
         render json: list.destroy, status: :ok
     end
+
+    def destroy
+        list = BookList.find(params[:id])
+        list.destroy
+        head :no_content
+    end
     
     def add_book
-        list = BookList.find(params[:book_id])
-    
-        if list.books.find_by(id: book.id)
-        render json: { error: "book already exist" }, status: :unprocessable_entity
+        list = ReadingList.find(params[:book_list_id])
+        book = Book.find(params[:book_id])
+        puts book.title
+        if list.books.find_by(id: params[:book_id])
+            render json: { error: "book already exist" }, status: :unprocessable_entity
         else
-        list.books << book
-        render json: list.reload, serializer: ListBookSerializer, status: :ok
+            list.books << book
+            render json: list.reload, include: ['book_lists.book', 'user'], serializer: ReadingListSerializer, status: :ok
         end
     end
 
     def remove_book
-        list = BookList.find(params[:reading_list_id])
+        list = ReadingList.find(params[:reading_list_id])
+        book = Book.find(params[:book_id])
         list.books.delete(book)
 
         render json: list.reload

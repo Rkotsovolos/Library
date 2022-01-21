@@ -2,18 +2,20 @@ Rails.application.routes.draw do
   
 
 
-  resources :books, only: [:index, :show, :create] do 
+  resources :books, only: [:index, :show, :create, :destroy] do 
     post :add_note
     delete :remove_note
 
   end
 
-  resources :book_lists
-
-  resources :reading_lists, only: [:index, :show, :destroy, :create, :update] do
+  resources :book_lists, only: [:index, :show, :create, :destroy] do
     post :add_book
     delete :remove_book
   end
+
+  resources :reading_lists
+  
+  
   
   resources :notes
   resources :users, only: [:create]

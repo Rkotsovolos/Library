@@ -8,12 +8,18 @@ class BooksController < ApplicationController
 
     def show
         book = Book.find(params[:id]) 
-        render json: item, status: :ok
+        render json: book, status: :ok
     end
 
     def create
         book = Book.create!(book_params)
         render json: book, status: :created
+    end
+
+    def destroy
+        book = Book.find_by(id: params[:id])
+        book.destroy
+        head :no_content
     end
 
     private 

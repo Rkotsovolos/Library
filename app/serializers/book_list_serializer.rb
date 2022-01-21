@@ -1,5 +1,5 @@
 class BookListSerializer < ActiveModel::Serializer
-  attributes :id, :name
-  has_one :user
-  has_many :books
+  attributes :id, :book
+  has_one :reading_list
+  has_one :book
 end

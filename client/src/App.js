@@ -49,7 +49,7 @@ function App() {
   }, [])
   
 
-
+  
   //Create a new Note
   const postNote = (note) => {
     fetch('/notes', {
@@ -88,7 +88,7 @@ function App() {
   const filteredBooks = books.length <= 0 ? books : books.filter(book => book.title.toLowerCase().includes(search.toLowerCase())).sort()
   const listsDisplay = user ? lists.filter(list => list.user.id === user.id) : lists
 
-
+  
 
   if (user && user.username) {
     return (

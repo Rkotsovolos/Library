@@ -4,21 +4,24 @@ import { ListsContext } from './context/listsState'
 
 function BookCard({title, author, image, id}) {
     
-    const {lists} = useContext(ListsContext)
+    const {lists, setLists} = useContext(ListsContext)
 
+ 
 
-    console.log(lists)
+   
 
     function addBookToList(e) {
         e.preventDefault()
-        const reading_lists_id = e.currentTarget.value
+        const book_list_id = e.currentTarget.value
         
-        fetch(`reading_lists/${reading_lists_id}/add_book?book_id=${id}`, {
+        fetch(`/book_lists/${book_list_id}/add_book?book_id=${id}`, {
             method: 'POST',
             headers: {'Content-Type':'application/json'}
           })
           .then(res => res.json())
-          .then(res => console.log(res))
+          .then((data) =>  { 
+            setLists(lists.map(list => list.id === data.id ? data : list))
+          })
     }
 
     return (
@@ -30,10 +33,10 @@ function BookCard({title, author, image, id}) {
                 <h5 style={{display: "flex", justifyContent: "center", color: 'black', fontFamily: 'Courgette'}}>Author: {author}</h5>
                 {/* <button onClick={addBookToList}className="bg-warning" style={{fontWeight: "bold"}}>Add to Reading</button> */}
 
-                <div className="input-group">
-                    <select onChange={addBookToList} className="custom-select" style={{marginBottom:"10px", marginLeft:"15px", marginRight:"15px"}} id="inputGroupSelect04">
-                        <option value="Add to Book List">Add Item to Book List</option>
-                        {lists?.map(list => <option value={list.id} key={list.id} id={list.id}>{list.name} </option>)}
+                <div className="input-group bg-warning">
+                    <select onChange={addBookToList} className="custom-select bg-warning" style={{marginBottom:"10px", marginLeft:"15px", marginRight:"15px", fontWeight: "bold"}} id="inputGroupSelect04">
+                        <option  style={{fontWeight: "bold", color: "black"}} value="Add to Book List">Choose Book List</option>
+                        {lists?.map(list => <option style={{fontWeight: "bold", color: "black"}} value={list.id} key={list.id} id={list.id}>{list.name} </option>)}
                     </select>
                 </div>
             </div>

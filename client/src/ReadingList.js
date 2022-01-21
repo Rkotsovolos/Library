@@ -1,15 +1,28 @@
 import { useState } from 'react'
+
 import ListCard from "./ListCard"
 import ListBookCard from "./ListBookCard"
 import EmptyListDisplay from "./EmptyListDisplay"
 
 function ReadingList({userLists, user, postList, lists, setLists}) {
 
-    const [listBooks, setlistBooks] = useState([])
+    const [show, setShow] = useState(false)    
     const [formData, setFormData] = useState({name:""})
 
+    console.log(userLists, "userLists")
 
-
+    if(userLists.length === 0 ) {
+        return <h1>Loading...</h1>
+    }
+    const bookLists = userLists[0].book_lists
+    console.log(bookLists, "bookLists")
+    
+    
+    
+    // console.log(user, "user")
+    // console.log(postList, "postList")
+    // console.log(lists, "lists")
+    // console.log(setLists, "setLists")
     function handleOnChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})
     }
@@ -30,16 +43,16 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
         .then(res => res.json())
         .then(() => {
             setLists(lists.filter(list => list.id !== id))
-            setlistBooks([])
+            
         })
     }
-
-
-
-    const booksToDisplay = listBooks.books
-    const listsDisplay = userLists.map(list => <ListCard key={list.id} id={list.id} name={list.name} setlistBooks={setlistBooks} handleListDelete={handleListDelete} />)
-    const listBooksDisplay = booksToDisplay?.map(book => <ListBookCard key={book.id} id={book.id} list_id={listBooks.id} image={book.image} title={book.title} setlistBooks={setlistBooks}/>)
+   
+   
+    const listsDisplay = userLists.map(list => <ListCard key={list.id} id={list.id} name={list.name} setShow={setShow} show={show} handleListDelete={handleListDelete} />)
     
+    const listBooksDisplay = bookLists?.map(book => <ListBookCard key={book.book.id} id={book.book.id} image={book.book.image} title={book.book.title} author={book.book.author} />)
+
+        
 
     return(
         <div  style={{borderRadius:"10px", fontFamily:"dosis"}}>
@@ -58,8 +71,11 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
             </div>
             <hr/>
             <div className="card-body d-flex justify-content-around flex-wrap">
-                {listBooks ? listBooksDisplay : <EmptyListDisplay />}
+                {bookLists.length > 0 ? null : <EmptyListDisplay />}
+                {show ? listBooksDisplay : null }
+              
             </div>
+        
         </div>
     )
 
