@@ -12,9 +12,22 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
     console.log(userLists, "userLists")
 
     if(userLists.length === 0 ) {
-        return <h1>Loading...</h1>
+        return (
+        <div className="card-header" style={{display: "flex", paddingTop: 50, textAlign: "center", justifyContent: "center"}}>
+                
+                <form  style={{ width: '30%'}} onSubmit={handleSubmit}>
+                    <div className="form-group mx-sm-3 ">
+                        <label style={{marginRight:"5px", color: "white", fontSize:35, fontFamily: "MedivalSharp"}}><strong>Create a Book List:</strong> </label>
+                        <input style={{textAlign: "center"}}value={formData.name} name="name" required="required" type="input" className="form-control"  placeholder="Book List Name..." onChange={handleOnChange}/>
+                    </div>
+                    <button type="submit" className="btn btn-warning" style={{fontWeight:"bold"}}>Create</button>
+                </form>
+            </div>
+        )
     }
-    const bookLists = userLists[0].book_lists
+    console.log(lists, "lists")
+
+    const bookLists = lists[0].book_lists
     console.log(bookLists, "bookLists")
     
     
@@ -23,6 +36,7 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
     // console.log(postList, "postList")
     // console.log(lists, "lists")
     // console.log(setLists, "setLists")
+
     function handleOnChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})
     }
@@ -50,7 +64,7 @@ function ReadingList({userLists, user, postList, lists, setLists}) {
    
     const listsDisplay = userLists.map(list => <ListCard key={list.id} id={list.id} name={list.name} setShow={setShow} show={show} handleListDelete={handleListDelete} />)
     
-    const listBooksDisplay = bookLists?.map(book => <ListBookCard key={book.book.id} id={book.book.id} image={book.book.image} title={book.book.title} author={book.book.author} />)
+    const listBooksDisplay = bookLists?.map(book => <ListBookCard key={book.id} id={book.id} image={book.book.image} title={book.book.title} author={book.book.author} />)
 
         
 

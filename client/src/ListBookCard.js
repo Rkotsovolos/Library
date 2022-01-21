@@ -1,17 +1,27 @@
-
+import {ListsContext} from './context/listsState'
+import {useContext} from 'react'
 
 function ListBookCard({id, name, image, title, author, setListBooks}){
 
-    console.log(setListBooks, 'where am i')
+    const {lists, setLists} = useContext(ListsContext)
+
+    console.log(lists, "listbookcard list")
 
     function handleListItemDelete(id) {
         
-        fetch(`book_lists/${id}`, {
+        fetch(`/book_lists/${id}`, {
             method: 'DELETE',
-            headers: {'Content-Type':'application/json'}
+            
         })
-        .then(res => res.json())
-        .then((data) => setListBooks(data))
+        .then(() => {
+            const bookLists = lists[0].book_lists
+            const oneLess = bookLists.filter(bookList => bookList.id !== id)
+            const readingLists = lists[0]
+            readingLists.book_lists = oneLess
+            console.log(readingLists, "readingLists")
+            console.log(oneLess, "oneLess")
+            setLists([readingLists])
+        })
     }
 
 

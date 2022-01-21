@@ -22,10 +22,7 @@ class BookListsController < ApplicationController
         render json: list, status: :accepted
     end
     
-    def destroy
-        list = BookList.find(params[:id])
-        render json: list.destroy, status: :ok
-    end
+
 
     def destroy
         list = BookList.find(params[:id])
